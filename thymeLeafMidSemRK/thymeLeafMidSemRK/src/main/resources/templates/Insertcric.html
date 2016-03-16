@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert  here</title>
+<link rel="stylesheet" type="text/css" href="cricDesign.css"></link>
+</head>
+<script src="validation.js"></script>
+<body id="animate-area" >
+<table align="center">
+<tr>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+<th>
+<form name="cric" action="/cricdetails" onsubmit="return validateForm()">
+<fieldset >
+    <legend>CRICKET WORLD DETAILS**</legend>
+
+  Team1 <font color="red" >*</font><br></br>
+  <input type="text" name="team1" placeholder="Name of Team"/><br></br><br></br>
+  Scores1 <font color="red">*</font><br></br>
+  <input type="number" name="scores1" placeholder="Name of Team"/><br></br><br></br>
+  Team2 <font color="red">*</font> <br></br>
+  <input type="text" name="team2"/><br></br><br></br>
+  Scores2 <font color="red">*</font><br></br>
+  <input type="number" name="scores2"/><br></br><br></br>
+  Winner <font color="red">*</font><br></br>
+  <input type="text" name="winner"/><br></br><br></br>
+  Date <font color="red">*</font><br></br>
+  <input type="date" name="date"/><br></br><br></br>
+  Player Of Match <font color="red">*</font><br></br>
+  <input type="text" name="playerOfMatch"/><br></br>
+  <font color="red" size="1" align="left"> * mandatory fields</font><br></br><br></br>
+  <input type="submit" name="Submit"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" name="Reset"/>
+  </fieldset>
+</form>
+</th>
+<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</th>
+</tr>
+</table>
+
+</body>
+</html>

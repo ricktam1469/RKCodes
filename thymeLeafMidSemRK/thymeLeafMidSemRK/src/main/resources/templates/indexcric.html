@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="cricDesign.css"></link>
+</head>
+<body bgcolor="cyan" id="animate-area">
+
+<br></br>
+
+<table align="center" cellspacing="10" cellspadding="10">
+<tr>
+<th>
+<div class="stage" style="width: 100px; height: 100px;">
+<div class="cubespinner">
+<div class="face1"><img src="images/ind.jpg" width="100px" height="100px"/></div>
+<div class="face2"><img src="images/aus.png" width="100px" height="100px"/></div>
+<div class="face3"><img src="images/sa.jpg" width="100px" height="100px"/></div>
+<div class="face4"><img src="images/sl.png" width="100px" height="100px"/></div>
+<div class="face5"><img src="images/wi.png" width="100px" height="100px"/></div>
+<div class="face6"><img src="images/eng.png" width="100px" height="100px"/></div>
+</div>
+</div>
+<br></br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</th>
+<th><h1><font color="#390D69" face="Comic Sans MS">WELCOME TO CRICKET WORLD</font></h1></th>
+</tr>
+<tr>
+<th></th>
+<th>
+	<table border="1"  cellspacing="10" cellspadding="10" id="animate-area1" >
+	<tr>
+	
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Team1</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Scores</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Team2</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Scores</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Winner</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Date</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Player of Match</font></th>
+	
+	</tr>
+	
+	<tr th:each = "cric:${cricUpdate}">
+	<th th:text = "${cric.team1}"></th>
+	<th th:text = "${cric.scores1}"></th>
+	<th th:text = "${cric.team2}"></th>
+	<th th:text = "${cric.scores2}"></th>
+	<th th:text = "${cric.winner}"></th>
+	<th th:text = "${cric.date}"></th>
+	<th th:text = "${cric.playerOfMatch}"></th>
+	</tr>
+	
+</table>
+</th>
+</tr>
+</table>
+</body>
+</html>

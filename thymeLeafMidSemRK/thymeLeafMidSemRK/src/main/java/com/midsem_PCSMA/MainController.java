@@ -99,8 +99,8 @@ public class MainController {
 		
 	}*/
 	
-	@RequestMapping(value = "/cricDetails", method = RequestMethod.GET)
-	public List<CricUpdate> getCricUser(
+	@RequestMapping(value = "/cricdetails", method = RequestMethod.GET)
+	public String getCricUser(
 		@RequestParam("team1")String team1,
 		@RequestParam("scores1")int scores1,
 		@RequestParam("team2")String team2,
@@ -125,8 +125,8 @@ public class MainController {
 		
 		mongocric.save(cric);
 		
-		return mongocric.findAll();
-		//return "redirect:/index";
+		//return mongocric.findAll();
+		return "redirect:/indexcric";
 		
 	}
 	
@@ -140,6 +140,17 @@ public class MainController {
 		
 		return "index";
 	}
+	@RequestMapping(value = "/indexcric", method = RequestMethod.GET)
+	public String indexcric(
+		Model model,Pageable pageable
+			) {
+		
+		
+		model.addAttribute("cricUpdate",mongocric.findAll());
+		
+		return "indexcric";
+	}
+	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String Insert(
 		Model model
@@ -149,5 +160,26 @@ public class MainController {
 		
 		//model.addAttribute("students",mongo.findAll());
 		return "Insert";
+	}
+	@RequestMapping(value = "/insertcric", method = RequestMethod.GET)
+	public String Insertcric(
+		Model model
+			) {
+		
+		
+		
+		//model.addAttribute("students",mongo.findAll());
+		return "Insertcric";
+	}
+	
+	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	public String welcome(
+		Model model
+			) {
+		
+		
+		
+		//model.addAttribute("students",mongo.findAll());
+		return "welcome";
 	}
 }

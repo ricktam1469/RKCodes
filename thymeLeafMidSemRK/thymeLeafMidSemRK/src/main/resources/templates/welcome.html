@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="fifaDesign.css"></link>
+</head>
+
+    <style type="text/css" media="screen" id="internalStyle">
+		div {
+			border: 0px solid blue;
+			position: relative;
+		}
+		div img {
+			vertical-align: top;
+		}
+		div > span {
+			display: block;
+			width: 400px;
+			height: 30px;
+			position: absolute;
+			bottom: 0px;
+			left: 110px;
+			font-size: 18px;
+			font-weight: bold;
+			font-family: Arial, "MS Trebuchet", sans-serif;
+			-webkit-transition: all .3s linear;
+
+		}
+		div:hover > span {
+			-webkit-transform: scale(2) translate(150px,-10px);
+
+		}
+		#world {
+			margin: 0px auto;
+			width: 600px;
+			height: 600px;
+			-webkit-transition: all 1s ease-in-out;
+
+		}
+		#images {
+			position: relative;
+			width: 400px;
+			height: 400px;
+			-webkit-transform: translate(100px, -300px);
+
+		}
+		#images img {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			-webkit-transition: all 1s ease-in-out;
+
+		}
+		#imgOne {
+			-webkit-transform: rotate(00deg);
+
+		}
+		#imgTwo {
+			-webkit-transform: rotate(-90deg);
+
+		}
+		#imgThree {
+			-webkit-transform: rotate(-180deg);
+
+		}
+		#imgFour {
+			-webkit-transform: rotate(-270deg);
+
+		}
+
+		#world.normal {
+			-webkit-transform: rotate(0deg);
+
+		}
+		#world.normal #imgOne {
+			opacity: 1.0;
+		}
+		#world.normal #imgTwo {
+			opacity: 0.0;
+		}
+		#world.normal #imgThree {
+			opacity: 0.0;
+		}
+		#world.normal #imgFour {
+			opacity: 0.0;
+		}
+
+		#world.left_to_top {
+			-webkit-transform: rotate(90deg);
+
+		}
+		#world.left_to_top #imgOne {
+			opacity: 0.0;
+		}
+		#world.left_to_top #imgTwo {
+			opacity: 1.0;
+		}
+		#world.left_to_top #imgThree {
+			opacity: 0.0;
+		}
+		#world.left_to_top #imgFour {
+			opacity: 0.0;
+		}
+
+		#world.bottom_to_top {
+			-webkit-transform: rotate(180deg);
+
+		}
+		#world.bottom_to_top #imgOne {
+			opacity: 0.0;
+		}
+		#world.bottom_to_top #imgTwo {
+			opacity: 0.0;
+		}
+		#world.bottom_to_top #imgThree {
+			opacity: 1.0;
+		}
+		#world.bottom_to_top #imgFour {
+			opacity: 0.0;
+		}
+
+		#world.right_to_top {
+			-webkit-transform: rotate(270deg);
+
+		}
+		#world.right_to_top #imgOne {
+			opacity: 0.0;
+		}
+		#world.right_to_top #imgTwo {
+			opacity: 0.0;
+		}
+		#world.right_to_top #imgThree {
+			opacity: 0.0;
+		}
+		#world.right_to_top #imgFour {
+			opacity: 1.0;
+		}
+
+		#one {
+			height: 100px;
+			width: 500px;
+			cursor: pointer;
+		}
+		#two {
+			height: 100px;
+			width: 500px;
+			cursor: pointer;
+			-webkit-transform: rotate(-90deg) translate(-200px,-200px);
+
+		}
+		#three {
+			height: 100px;
+			width: 500px;
+			cursor: pointer;
+			-webkit-transform: rotate(-180deg) translate(-100px,-300px);
+
+		}
+		#four {
+			height: 100px;
+			width: 500px;
+			cursor: pointer;
+			-webkit-transform: rotate(-270deg) translate(-100px,-300px);
+
+		}
+	</style>
+	<script type="text/javascript">
+	//<![CDATA[
+
+		function init() {
+			world = document.getElementById("world");
+			image = document.getElementById("image");
+
+			one = document.getElementById("one");
+			one.addEventListener('click', showTop, false);
+			two = document.getElementById("two");
+			two.addEventListener('click', showLeft, false);
+			three = document.getElementById("three");
+			three.addEventListener('click', showBottom, false);
+			four = document.getElementById("four");
+			four.addEventListener('click', showRight, false);
+
+			function showTop() {
+				world.className = "normal";
+			}
+
+			function showLeft() {
+				world.className = "left_to_top";
+			}
+
+			function showBottom() {
+				world.className = "bottom_to_top";
+			}
+
+			function showRight() {
+				world.className = "right_to_top";
+			}
+
+		}
+
+	//]]>
+	</script>
+   
+    <body bgcolor="cyan" background="images/w1.jpg" onload="init()">
+ 
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+
+      <font face="comic sans ms" color="white" size="6">WELCOME TO SPORTS WORLD
+</font>   
+         
+
+         <div id="world" class="normal">
+		<div id="one" title="click 8882413728"><a href="/insertcric">
+			<img src="images/c1.jpg" width="100" height="100" alt="CricketWC" /></a>
+			<span><font face="comic sans ms" color="white">Cricket World Cup T20</font></span>
+		</div>
+		<div id="two" title="click "><a href="/insert">
+			<img src="images/f7.jpg" width="100" height="100" alt="footBall WC"  /></a>
+
+			<span><font face="comic sans ms" color="white">Football World</font></span>
+		</div>
+		<div id="three" title="click">
+			<img src="images/c2.jpg" width="100" height="100" alt="preview"  />
+			<span><font face="comic sans ms" color="white"></font></span>
+		</div>
+		<div id="four" title="click">
+			<img src="images/f7.jpg" width="100" height="100" alt=" preview"  />
+
+			<span><font face="comic sans ms" color="white"></font></span>
+		</div>
+		<div id="images">
+			<img id="imgFour" src="images/c2.jpg" width="400" height="400" alt="c2" />
+			<img id="imgThree" src="images/f7.jpg" width="400" height="400" alt="f3" />
+			<img id="imgTwo" src="images/f7.jpg" width="400" height="400" alt="f2" />
+			<img id="imgOne" src="images/c1.jpg" width="400" height="400" alt="c1" />
+		</div>
+
+	</div>
+
+         
+        
+    </body>
+</html>
