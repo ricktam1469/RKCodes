@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.core.FindAndModifyOptions;
-import org.springframework.data.mongodb.core.query.BasicQuery;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Controller;
@@ -17,20 +14,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class FifaController {
+public class MainController {
 	
-@Autowired MongoRepository mongo;
+@Autowired FifaUpdateRepository mongofifa;
+@Autowired CricUpdateRepository mongocric;
 	
 	
-	@RequestMapping(value = "/allDetails", method = RequestMethod.GET)
+	@RequestMapping(value = "/fifaShowDetails", method = RequestMethod.GET)
 	public @ResponseBody List<FifaUpdate> getAllUser(
 			) {
 		
-		return mongo.findAll();
+		return mongofifa.findAll();
+		
+	}
+	@RequestMapping(value = "/cricShowDetails", method = RequestMethod.GET)
+	public @ResponseBody List<CricUpdate> getCricUser(
+			) {
+		
+		return mongocric.findAll();
 		
 	}
 	
-	@RequestMapping(value = "/addDetails", method = RequestMethod.GET)
+	@RequestMapping(value = "/fifaDetails", method = RequestMethod.GET)
 	public String getAllUser(
 		@RequestParam("club")String club,
 		@RequestParam("team1")String team1,
@@ -55,7 +60,7 @@ public class FifaController {
 		fifa.setDate(date);
 		fifa.setPlayerOfMatch(playerOfMatch);
 		
-		mongo.save(fifa);
+		mongofifa.save(fifa);
 		
 		//return mongo.findAll();
 		return "redirect:/index";
@@ -94,16 +99,44 @@ public class FifaController {
 		
 	}*/
 	
+	@RequestMapping(value = "/cricDetails", method = RequestMethod.GET)
+	public List<CricUpdate> getCricUser(
+		@RequestParam("team1")String team1,
+		@RequestParam("scores1")int scores1,
+		@RequestParam("team2")String team2,
+		@RequestParam("scores2")int scores2,
+		@RequestParam("winner")String winner,
+		@RequestParam("date")String date,
+		@RequestParam("playerOfMatch")String playerOfMatch,
+		Model model
+		
+			) {
+				
+		CricUpdate cric = new CricUpdate();
+		
+		
+		cric.setTeam1(team1);
+		cric.setScores1(scores1);
+		cric.setTeam2(team2);
+		cric.setScores2(scores2);
+		cric.setWinner(winner);
+		cric.setDate(date);
+		cric.setPlayerOfMatch(playerOfMatch);
+		
+		mongocric.save(cric);
+		
+		return mongocric.findAll();
+		//return "redirect:/index";
+		
+	}
+	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(
 		Model model,Pageable pageable
 			) {
 		
-		Query q=new Query();
-		q.limit(2);
 		
-		
-		model.addAttribute("fifaUpdate",mongo.findAll(pageable));
+		model.addAttribute("fifaUpdate",mongofifa.limit10());
 		
 		return "index";
 	}
