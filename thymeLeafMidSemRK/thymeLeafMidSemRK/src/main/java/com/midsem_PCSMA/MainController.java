@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -132,17 +130,33 @@ public class MainController {
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(
-		Model model,Pageable pageable
+		Model model
 			) {
 		
 		
-		model.addAttribute("fifaUpdate",mongofifa.limit10());
+		model.addAttribute("fifaUpdate",mongofifa.limitEntry(6));
 		
 		return "index";
 	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(
+		@RequestParam("date")String date,	
+		Model model,Pageable pageable
+			) {
+
+		
+		
+		System.out.println(date);
+		mongofifa.deleteEntry(date);
+		
+		//model.addAttribute("fifaUpdate",mongofifa.limitEntry(6));
+		
+		return "redirect:/index";
+	}
 	@RequestMapping(value = "/indexcric", method = RequestMethod.GET)
 	public String indexcric(
-		Model model,Pageable pageable
+		Model model
 			) {
 		
 		

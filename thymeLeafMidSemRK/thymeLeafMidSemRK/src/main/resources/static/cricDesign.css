@@ -87,6 +87,21 @@ transform:rotateX(-90deg) translateZ(60px)}
 	from { background-position: 0 0; }
 	to { background-position: 100% 0; }
 }
+
+a:hover, a:focus {
+    z-index: 200;
+      /* bring to top when the mouse is over or
+         when it has the focus (for keyboard navigation) */
+}
+a img {
+    border: none;
+    -webkit-transition: all .2s;
+    -webkit-transform-origin: top;
+}
+a:hover img, a:focus img {
+    -webkit-transform: scale(2);
+  }
+
 #animate-area	{ 
 	width: 500px; 
 	height: 100px; 
