@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="Design.css"></link>
+
+</head>
+<body id="animate-area" align="center" >
+<header id="header">
+			<div class="innertube">
+				<p><h1><font color="white" face="Comic Sans MS">WELCOME TO SURPRISE QUESTION</font></h1></p>
+			</div>
+		</header>
+		<main>
+			<div class="innertube" >
+				
+			<br></br>
+
+<table align="center" cellspacing="10" cellspadding="10">
+<tr>
+<th>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</th>
+<th><h1><font color="#390D69" face="Comic Sans MS">CHECK ALL QUIZES RESULTS</font></h1></th>
+</tr>
+<tr>
+<th></th>
+<th>
+	<table border="1"  cellspacing="10" cellspadding="10" id="animate-area1" >
+	<tr>
+	
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Quiz No.</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Questions</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Correct Answer</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Graph_Response</font></th>
+	
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Delete Key</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Correct Answer</font></th>
+	<th><font color="#390D69" face="Comic Sans MS" size="4">Details_of_Student</font></th>
+	
+	
+	</tr>
+	
+	<tr th:each = "q:${quizes}">
+	<th th:text = "${q.qid}"></th>
+	<th th:text = "${q.ques}"></th>
+	<th th:text = "${q.answer}"></th>
+	<th><a th:href="|/graphresponse?qid=${q.qid}|"><button class="button3"><span>Responses</span></button></a></th>
+	
+	<th><a th:href="|/delete?qid=${q.qid}|"><button class="button4"  onclick="return confirm('Are you sure to DELETE?')">Delete</button></a></th>
+	<th>
+	<form action="/answerpublish">
+	<input type="hidden" name="qid" th:value="${q.qid}"/>
+	<select name="answer" vlaue="--">
+    <option>A</option> <option>B</option><option>C</option> <option>D</option>
+    </select>
+    <button class="button5">Submit</button>
+    </form>
+    </th>
+   <th th:text = "${q.correctStudent}"></th>
+	</tr>
+	
+</table>
+</th>
+
+</tr>
+<tr>
+<th></th>
+<th>
+
+<font color="#4CA3DC" face="Comic Sans MS">GO BACK </font><br></br><a th:href="|/welcome?sub=${sub}|">
+           <img src="images/back.bmp" width="50" height="50" /></a>
+</th>
+<th></th>
+</tr>
+</table>
+
+	
+			</div>
+		</main>
+
+		<nav id="left">
+			<div class="innertube" >
+				<h2><font color="white"><u>WELCOME</u></font></h2><br></br>
+				<ul>
+					<li class="c3" th:text="${name}"></li>
+					<li><br></br></li>
+					<li><font color="white">IIITDelhi</font></li>
+					<li><br></br></li>
+					<li><a href="/index"><button class="button3"><span>signOut</span></button></a></li>
+				</ul>
+				<br></br><br></br>
+				<h1><font color="white"><u>Class Details</u></font></h1><br></br>
+				<ul>
+				<li class="c2" th:text="${sub}"></li>
+				<li><br></br><br></br></li>
+					<li><a href="/studentresponse"><button class="button5">All Student Response</button></a></li>
+					<li><br></br><br></br></li>
+					<li><a href="/performance"><button class="button3"><span>Performance</span></button></a></li>
+				</ul>
+
+			</div>
+		</nav>	
+		<div id="right">
+			<div class="innertube" >
+				<font color="white" face="Comic Sans MS">ALL LINKS</font><br></br><br></br>
+				
+				<a href="/index"><button class="button5">HomePage</button></a><br></br><br></br><br></br>
+				<a href="/login"><button class="button5">Login</button></a><br></br><br></br><br></br>
+				<a th:href="|/subject?email=${email}|"><button class="button5">Choose Subjects</button></a><br></br><br></br><br></br>
+				<a th:href="|/welcome?sub=${sub}|"><button class="button5">Welcome</button></a><br></br><br></br>
+			</div>
+		</div>
+		
+		<footer id="footer">
+			<div class="innertube">
+				<p>@Copyright of IIITD..     By Ricktam, Kajal,Neha
+				<img src="images/iiitd.png" width="64" height="25"/></p>
+			</div>
+		</footer>		
+
+
+
+
+</body>
+</html>
